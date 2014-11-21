@@ -1,0 +1,9 @@
+<webscript>
+   <shortname>Share Search</shortname>
+   <description>Share Search Component Data Webscript</description>
+   <url>/slingshot/searchadd?query={query?}</url>
+   <format default="json">argument</format>
+   <authentication>admin</authentication>
+   <transaction>required</transaction>
+   <lifecycle>internal</lifecycle>
+</webscript>

@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>lamptt</shortname>
+	<description>Out properties root by lamptt</description>
+	<url>/zalu/usernamebyyear?year=[year]</url>
+	<format default="json">extension</format>
+	<authentication runas="admin">user</authentication>
+  	<transaction>required</transaction>
+</webscript>

@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="la:lamptt" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<description>lamptt'S lamptt</description>
+	<author>lamptt</author>
+	<version>1.0</version>
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+	</imports>
+	<namespaces>
+		<namespace uri="http://zalu.vn/model/lamptt/1.0" prefix="la"/>
+	</namespaces>
+
+	<constraints>
+		<constraint name="la:c1" type="LIST">    <!-- list ten loai -->
+			<parameter name="allowedValues">
+				<list>	
+					<value></value>				
+					<value>1</value>
+					<value>2</value>
+					<value>3</value>		
+					<value>4</value>
+					<value>5</value>
+					<value>6</value>
+					<value>7</value>
+					<value>8</value>
+					<value>9</value>
+					<value>10</value>
+					<value>11</value>
+					<value>12</value>
+					<value>13</value>
+					<value>14</value>		
+					<value>15</value>
+					<value>16</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="la:c2" type="LIST">  list tac gia
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<value>21</value>	
+					<value>22</value>
+					<value>23</value>
+					<value>24</value>
+					<value>43</value>
+					<value>25</value>
+					<value>1</value>
+					<value>2</value>
+					<value>3</value>
+					<value>4</value>
+					<value>5</value>
+					<value>6</value>
+					<value>7</value>
+					<value>8</value>
+					<value>9</value>
+					<value>10</value>		
+					<value>11</value>
+					<value>12</value>
+					<value>13</value>
+					<value>14</value>
+					<value>15</value>
+					<value>16</value>
+					<value>17</value>
+					<value>18</value>
+					<value>19</value>
+					<value>20</value>
+					<value>26</value>
+					<value>27</value>
+					<value>28</value>
+					<value>29</value>
+					<value>30</value>
+					<value>31</value>
+					<value>32</value>
+					<value>33</value>
+					<value>34</value>
+					<value>35</value>
+					<value>36</value>
+					<value>37</value>
+					<value>38</value>
+					<value>39</value>
+					<value>40</value>
+					<value>41</value>
+					<value>42</value>
+				</list>
+			</parameter>
+		</constraint>
+		<constraint name="la:c3" type="LIST"> <!-- list muc luc so -->
+			<parameter name="allowedValues">
+				<list>
+					<value></value>
+					<value>2</value>
+					<value>1</value>
+					<value>3</value>
+					<value>4</value>
+					<value>5</value>
+				</list>
+			</parameter>
+		</constraint>
+		
+		<constraint name="la:c4" type="LIST">   <!--listThoigianbaoquan-->
+			<parameter name="allowedValues">
+				<list>
+					<value></value>		
+					<value>1</value>
+					<value>2</value>
+					<value>3</value>
+					<value>4</value>
+				</list>
+			</parameter>
+		</constraint>
+	</constraints>
+	
+	<types>
+		<type name="la:t1">  <!--type cong van-->
+			<parent>cm:content</parent>
+			<properties>
+				<property name="la:t1p1"> <!--Ma co quan-->
+					<type>d:text</type>
+					<default>22_2</default> 
+				</property>
+				<property name="la:t1p2"> <!--maphong-->
+					<type>d:text</type>
+					<default>3</default> 
+				</property>
+				<property name="la:t1p3">  <!-- muc luc so -->
+					<type>d:text</type>
+					<default>2</default>
+					<constraints>
+						<constraint ref="la:c3" />
+					</constraints>
+				</property>
+				<property name="la:t1p4">   <!-- hop so -->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t1p5">  <!-- ho so so -->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t1p6">  <!-- to so -->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t1p7">  <!-- ten loai -->
+					<type>d:text</type>
+					<default>1</default> 
+					<constraints>
+						<constraint ref="la:c1" />
+					</constraints>
+					
+				</property>
+				<property name="la:t1p8">  <!-- so va ki hieu  -->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				
+				<property name="la:t1p9">  
+					<type>d:text</type>
+				</property>
+				
+				<property name="la:t1p10">  <!-- tac gia  -->
+					<type>d:text</type>
+					<protected>true</protected>
+					<default></default>
+					<constraints>
+						<constraint ref="la:c1" />
+					</constraints>
+				</property>
+				<property name="la:t1p11">  <!--  Trichyeunoidung - description -->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t1p12"> <!-- Kyhieuthongtin -->
+					<type>d:text</type>
+				</property>
+				
+				<property name="la:t1p13">  
+					<type>d:text</type>
+				</property>
+				
+				<property name="la:t1p14">  <!-- soluongto -->
+					<type>d:text</type>     
+				</property>
+				<property name="la:t1p15">  <!-- ngonngu -->
+					<type>d:text</type>
+					<default>Tiếng Việt</default>
+				</property>
+				<property name="la:t1p16">  <!-- buttich -->
+					<type>d:text</type>
+					<default>Không có</default> 
+				</property>
+				<property name="la:t1p17">  <!-- tinh trang vat ly-->
+					<type>d:text</type>
+					<default>Tài liệu đã cũ</default>
+				</property>
+				<property name="la:t1p18"> <!-- ghi chu -->
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p19">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p20">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p21">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p22">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p23">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p24">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p25">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p26">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p27">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p28">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p29">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p30">
+					<type>d:text</type>
+				</property>
+				<property name="la:t1p31">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t1p32">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t1p33">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t1p34">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t1p35">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t1p36">  <!-- thoi gian -->
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t1p37">
+					<type>d:date</type>
+				</property>
+				<property name="la:t1p38">
+					<type>d:date</type>
+				</property>
+				<property name="la:t1p39">
+					<type>d:date</type>
+				</property>
+				<property name="la:t1p40">
+					<type>d:date</type>
+				</property>
+				<property name="la:t1p41">  <!-- sotrang -->
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p42">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p43">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p44">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p45">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p46">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p47">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p48">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p49">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p50">
+					<type>d:int</type>
+				</property>
+				<property name="la:t1p51">
+					<type>d:long</type>
+				</property>
+				<property name="la:t1p52">
+					<type>d:long</type>
+				</property>
+				<property name="la:t1p53">
+					<type>d:long</type>
+				</property>
+				<property name="la:t1p54">
+					<type>d:long</type>
+				</property>
+				<property name="la:t1p55">
+					<type>d:long</type>
+				</property>
+				<property name="la:t1p56">
+					<type>d:float</type>
+				</property>
+				<property name="la:t1p57">
+					<type>d:float</type>
+				</property>
+				<property name="la:t1p58">
+					<type>d:float</type>
+				</property>
+				<property name="la:t1p59">
+					<type>d:float</type>
+				</property>
+				<property name="la:t1p60">
+					<type>d:float</type>
+				</property>
+				<property name="la:t1p61">
+					<type>d:double</type>
+				</property>
+				<property name="la:t1p62">
+					<type>d:double</type>
+				</property>
+				<property name="la:t1p63">
+					<type>d:double</type>
+				</property>
+				<property name="la:t1p64">
+					<type>d:double</type>
+				</property>
+				<property name="la:t1p65">
+					<type>d:double</type>
+				</property>
+			</properties>
+		</type>
+	
+		<type name="la:t2">    <!--type hoso-->
+			<parent>cm:content</parent>
+			<properties>
+				<property name="la:t2p1">  <!--Macoquan-->
+					<type>d:text</type>
+					<default>22_2</default>
+				</property>
+				<property name="la:t2p2">  <!--Maphong-->
+					<type>d:text</type>
+					<default>3</default>
+				</property>
+				<property name="la:t2p3">  <!--Muclucso-->
+					<type>d:text</type>
+					<default>2</default>
+					<constraints>
+						<constraint ref="la:c3" />
+					</constraints>
+				</property>
+				<property name="la:t2p4">  <!--Hopso-->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t2p5">  <!--Hososo-->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t2p6">  <!--kihieuthongtin-->
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p7">  <!--tieude-->
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t2p8"> <!--chugiai-->
+					<type>d:text</type>
+				</property>
+				
+				<property name="la:t2p9">  
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p10"> 
+					<type>d:text</type>
+					
+				</property>
+				<property name="la:t2p11"> <!--ngonngu-->
+					<type>d:text</type>
+					<default>Tiếng Việt</default>
+				</property>
+				<property name="la:t2p12"> <!--buttich-->
+					<type>d:text</type>
+				</property>
+				
+				<property name="la:t2p13">  
+					<type>d:text</type>
+				</property>
+				
+				<property name="la:t2p14">  <!--soluongto-->
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p15">  <!--thoigianbaoquan-->
+					<type>d:text</type>
+					<default>1</default>
+					<constraints>
+						<constraint ref="la:c4" />
+					</constraints>
+				</property>
+				<property name="la:t2p16">  <!--chedosudung-->
+					<type>d:text</type>
+					<default>Nội bộ cơ quan văn phòng Ủy ban nhân dân tỉnh Quảng Ninh</default>
+				</property>
+				<property name="la:t2p17">  <!--tinhtrangvatly-->
+					<type>d:text</type>
+					<default>Tài liệu đã cũ</default>
+				</property>
+				<property name="la:t2p18">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p19">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p20">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p21">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p22">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p23">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p24">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p25">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p26">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p27">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p28">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p29">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p30">
+					<type>d:text</type>
+				</property>
+				<property name="la:t2p31">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t2p32">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t2p33">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t2p34">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t2p35">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t2p36"> <!--thoigianbatdau-->
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t2p37"> <!--thoigianketthuc-->
+					<type>d:date</type>
+					<mandatory>true</mandatory>
+				</property>
+				<property name="la:t2p38">
+					<type>d:date</type>
+				</property>
+				<property name="la:t2p39">
+					<type>d:date</type>
+				</property>
+				<property name="la:t2p40">
+					<type>d:date</type>
+				</property>
+				<property name="la:t2p41">  <!--sotrang-->
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p42">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p43">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p44">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p45">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p46">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p47">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p48">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p49">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p50">
+					<type>d:int</type>
+				</property>
+				<property name="la:t2p51">
+					<type>d:long</type>
+				</property>
+				<property name="la:t2p52">
+					<type>d:long</type>
+				</property>
+				<property name="la:t2p53">
+					<type>d:long</type>
+				</property>
+				<property name="la:t2p54">
+					<type>d:long</type>
+				</property>
+				<property name="la:t2p55">
+					<type>d:long</type>
+				</property>
+				<property name="la:t2p56">
+					<type>d:float</type>
+				</property>
+				<property name="la:t2p57">
+					<type>d:float</type>
+				</property>
+				<property name="la:t2p58">
+					<type>d:float</type>
+				</property>
+				<property name="la:t2p59">
+					<type>d:float</type>
+				</property>
+				<property name="la:t2p60">
+					<type>d:float</type>
+				</property>
+				<property name="la:t2p61">
+					<type>d:double</type>
+				</property>
+				<property name="la:t2p62">
+					<type>d:double</type>
+				</property>
+				<property name="la:t2p63">
+					<type>d:double</type>
+				</property>
+				<property name="la:t2p64">
+					<type>d:double</type>
+				</property>
+				<property name="la:t2p65">
+					<type>d:double</type>
+				</property>
+			</properties>
+		</type>
+	
+		<type name="la:t3">
+			<parent>cm:content</parent>
+			<properties>
+				<property name="la:t3p1">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p2">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p3">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p4">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p5">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p6">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p7">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p8">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p9">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p10">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p11">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p12">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p13">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p14">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p15">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p16">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p17">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p18">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p19">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p20">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p21">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p22">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p23">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p24">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p25">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p26">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p27">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p28">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p29">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p30">
+					<type>d:text</type>
+				</property>
+				<property name="la:t3p31">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t3p32">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t3p33">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t3p34">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t3p35">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t3p36">
+					<type>d:date</type>
+				</property>
+				<property name="la:t3p37">
+					<type>d:date</type>
+				</property>
+				<property name="la:t3p38">
+					<type>d:date</type>
+				</property>
+				<property name="la:t3p39">
+					<type>d:date</type>
+				</property>
+				<property name="la:t3p40">
+					<type>d:date</type>
+				</property>
+				<property name="la:t3p41">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p42">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p43">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p44">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p45">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p46">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p47">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p48">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p49">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p50">
+					<type>d:int</type>
+				</property>
+				<property name="la:t3p51">
+					<type>d:long</type>
+				</property>
+				<property name="la:t3p52">
+					<type>d:long</type>
+				</property>
+				<property name="la:t3p53">
+					<type>d:long</type>
+				</property>
+				<property name="la:t3p54">
+					<type>d:long</type>
+				</property>
+				<property name="la:t3p55">
+					<type>d:long</type>
+				</property>
+				<property name="la:t3p56">
+					<type>d:float</type>
+				</property>
+				<property name="la:t3p57">
+					<type>d:float</type>
+				</property>
+				<property name="la:t3p58">
+					<type>d:float</type>
+				</property>
+				<property name="la:t3p59">
+					<type>d:float</type>
+				</property>
+				<property name="la:t3p60">
+					<type>d:float</type>
+				</property>
+				<property name="la:t3p61">
+					<type>d:double</type>
+				</property>
+				<property name="la:t3p62">
+					<type>d:double</type>
+				</property>
+				<property name="la:t3p63">
+					<type>d:double</type>
+				</property>
+				<property name="la:t3p64">
+					<type>d:double</type>
+				</property>
+				<property name="la:t3p65">
+					<type>d:double</type>
+				</property>
+			</properties>
+		</type>
+	
+		<type name="la:t4">
+			<parent>cm:content</parent>
+			<properties>
+				<property name="la:t4p1">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p2">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p3">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p4">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p5">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p6">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p7">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p8">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p9">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p10">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p11">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p12">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p13">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p14">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p15">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p16">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p17">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p18">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p19">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p20">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p21">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p22">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p23">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p24">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p25">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p26">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p27">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p28">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p29">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p30">
+					<type>d:text</type>
+				</property>
+				<property name="la:t4p31">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t4p32">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t4p33">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t4p34">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t4p35">
+					<type>d:boolean</type>
+				</property>
+				<property name="la:t4p36">
+					<type>d:date</type>
+				</property>
+				<property name="la:t4p37">
+					<type>d:date</type>
+				</property>
+				<property name="la:t4p38">
+					<type>d:date</type>
+				</property>
+				<property name="la:t4p39">
+					<type>d:date</type>
+				</property>
+				<property name="la:t4p40">
+					<type>d:date</type>
+				</property>
+				<property name="la:t4p41">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p42">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p43">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p44">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p45">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p46">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p47">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p48">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p49">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p50">
+					<type>d:int</type>
+				</property>
+				<property name="la:t4p51">
+					<type>d:long</type>
+				</property>
+				<property name="la:t4p52">
+					<type>d:long</type>
+				</property>
+				<property name="la:t4p53">
+					<type>d:long</type>
+				</property>
+				<property name="la:t4p54">
+					<type>d:long</type>
+				</property>
+				<property name="la:t4p55">
+					<type>d:long</type>
+				</property>
+				<property name="la:t4p56">
+					<type>d:float</type>
+				</property>
+				<property name="la:t4p57">
+					<type>d:float</type>
+				</property>
+				<property name="la:t4p58">
+					<type>d:float</type>
+				</property>
+				<property name="la:t4p59">
+					<type>d:float</type>
+				</property>
+				<property name="la:t4p60">
+					<type>d:float</type>
+				</property>
+				<property name="la:t4p61">
+					<type>d:double</type>
+				</property>
+				<property name="la:t4p62">
+					<type>d:double</type>
+				</property>
+				<property name="la:t4p63">
+					<type>d:double</type>
+				</property>
+				<property name="la:t4p64">
+					<type>d:double</type>
+				</property>
+				<property name="la:t4p65">
+					<type>d:double</type>
+				</property>
+			</properties>
+		</type>
+	</types>
+	
+	<aspects>
+		<!-- Definition of new Pages Aspect dem so Trang tai lieu-->
+		<aspect name="la:pages">
+			<title>PDF Pages</title>
+			<properties>
+				<property name="la:numberofpage">
+					<type>d:int</type>
+					<!-- <protected>true</protected> -->
+				</property>
+			</properties>
+		</aspect>	
+	</aspects>
+</model>

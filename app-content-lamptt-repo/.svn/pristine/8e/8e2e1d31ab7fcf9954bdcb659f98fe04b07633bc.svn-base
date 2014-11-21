@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>lamptt</shortname>
+	<description>Infor root created by lamptt</description>
+	<url>/zalu/installcount.json?pass={pass}</url>
+	<format default="json">extension</format>
+	<authentication>admin</authentication>
+  	<transaction>required</transaction>
+</webscript>

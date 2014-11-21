@@ -1,0 +1,1195 @@
+<alfresco-config>
+	<!-- Global config section -->
+	<config replace="true">
+		<flags>
+			<!-- Developer debugging setting to turn on DEBUG mode for client scripts 
+				in the browser -->
+			<client-debug>false</client-debug>
+			<!-- LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, 
+				Ctrl, Shift, Shift). This flag automatically activates logging on page load. -->
+			<client-debug-autologging>false</client-debug-autologging>
+		</flags>
+		<header>
+         <app-items>
+            <!-- defaults: icon="{id}.png" label="header.{id}.label" description="header.{id}.description" -->
+            <item type="link" id="my-dashboard">{userdashboardpage}</item>
+            <item type="js" id="sites">Alfresco.module.Sites</item>
+            <item type="link" id="people">/people-finder</item>
+            <item type="link" id="repository" condition="conditionRepositoryRootNode">/repository</item>
+            <item type="link" id="report" >/report</item>
+            <item type="container" id="more">
+               <container-group id="my">
+                  <item type="link" id="my-tasks">/my-tasks#filter=workflows|active</item>
+                  <item type="link" id="my-workflows">/my-workflows#filter=workflows|active</item>
+                  <item type="link" id="my-content">/user/user-content</item>
+                  <item type="link" id="my-sites">/user/user-sites</item>
+                  <item type="link" id="my-profile">{userprofilepage}</item>
+               </container-group>
+               <container-group id="tools" permission="admin">
+                  <item type="link" id="application">/console/admin-console/application</item>
+                  <item type="link" id="groups">/console/admin-console/groups</item>
+                  <item type="link" id="replication-jobs" condition="!conditionEditionTeam">/console/admin-console/replication-jobs</item>
+                  <item type="link" id="repository">/console/admin-console/repository</item>
+                  <item type="link" id="trashcan">/console/admin-console/trashcan</item>
+                  <item type="link" id="users">/console/admin-console/users</item>
+                  <item type="link" id="more">/console/admin-console/</item>
+               </container-group>
+            </item>
+         </app-items>
+         <user-items>
+            <item type="container" id="user" icon="" description="">
+               <container-group id="usermenu" label="">
+                  <item type="user" id="status">{userprofilepage}</item>
+                  <item type="link" id="my-profile">{userprofilepage}</item>
+                  <item type="link" id="change-password" condition="user.capabilities.isMutable">/user/change-password</item>
+                  <item type="external-link" id="help">{share-help}</item>
+                  <item type="link" id="logout" condition="!context.externalAuthentication">/dologout</item>
+               </container-group>
+            </item>
+         </user-items>
+         <dependencies>
+            <css src="/modules/create-site.css" />
+            <css src="/modules/header/sites.css" />
+            <js src="/modules/create-site.js" />
+            <js src="/modules/header/sites.js" />
+         </dependencies>
+      </header>
+	</config>
+	
+	<config evaluator="string-compare" condition="AdvancedSearch">
+		<advanced-search>
+			<forms>
+				<form labelId="type.la_t1" descriptionId="type.la_t1.description" >la:t1</form>
+				<form labelId="type.la_t2" descriptionId="type.la_t2.description" >la:t2</form>
+			</forms>
+		</advanced-search>
+	</config>
+	<config evaluator="string-compare" condition="DocumentLibrary">
+		<types>
+			<type name="cm:content">
+				<subtype name="la:t1" />
+				<subtype name="la:t2" />
+			</type>
+		</types>
+		<aspects>
+			<visible>
+				<aspect name="xla:oldname" />
+				<aspect name="ks:sample" />
+			</visible>
+			<addable>
+			</addable>
+			<removeable>
+			</removeable>
+		</aspects>
+	</config>
+
+	<!-- Cong van -->
+	<config evaluator="node-type" condition="la:t1">
+		<forms>
+			<form>
+				<field-visibility>
+					<!-- ma co quan luu tru -->
+					<show id="la:t1p1" />
+					<!-- ma phong -->
+					<show id="la:t1p2" />
+					<show id="la:t1p3" />  <!-- muc luc so -->
+					<show id="la:t1p4" />  <!-- hop so -->
+					<show id="la:t1p5" />  <!-- ho so so -->
+					<show id="la:t1p6" />   <!-- to so -->
+					<show id="la:t1p7" />  <!-- ten loai -->
+					<show id="la:t1p8" />   <!-- so va ki hieu  -->
+					<show id="la:t1p36" />    <!-- thoi gian -->
+					<!--<show id="la:t1p9" />-->
+					<show id="la:t1p10" />  <!-- tac gia  -->
+					<show id="cm:description" force="true" /> <!--  Trichyeunoidung - description -->
+					<show id="la:numberofpage" />  <!-- sotrang -->
+					<!--<show id="la:t1p11" /> -->
+					<show id="cm:name" force="true" />   <!-- Kyhieuthongtin -->
+					
+					
+					<!--<show id="la:t1p13" />-->
+					<!--<show id="la:t1p14" />--> <!-- soluongto -->
+					<show id="la:t1p15" />   <!-- ngonngu -->
+					<show id="la:t1p16" />   <!-- buttich -->
+					<show id="la:t1p17" />    <!-- tinh trang vat ly-->
+					<show id="la:t1p18" />   <!-- ghi chu -->
+					
+					<!--<show id="la:t1p19" />
+					<show id="la:t1p20" />
+					<show id="la:t1p21" />
+					<show id="la:t1p22" />
+					<show id="la:t1p23" />
+					<show id="la:t1p24" />
+					<show id="la:t1p25" />
+					<show id="la:t1p26" />
+					<show id="la:t1p27" />
+					<show id="la:t1p28" />
+					<show id="la:t1p29" />
+					<show id="la:t1p30" />
+					<show id="la:t1p31" />
+					<show id="la:t1p32" />
+					<show id="la:t1p33" />
+					<show id="la:t1p34" />
+					<show id="la:t1p35" />
+					-->
+					
+					<!--<show id="la:t1p37" />
+					<show id="la:t1p38" />
+					<show id="la:t1p39" />
+					<show id="la:t1p40" />
+					-->
+					<!--<show id="la:t1p42" />
+					<show id="la:t1p43" />
+					<show id="la:t1p44" />
+					<show id="la:t1p45" />
+					<show id="la:t1p46" />
+					<show id="la:t1p47" />
+					<show id="la:t1p48" />
+					<show id="la:t1p49" />
+					<show id="la:t1p50" />
+					<show id="la:t1p51" />
+					<show id="la:t1p52" />
+					<show id="la:t1p53" />
+					<show id="la:t1p54" />
+					<show id="la:t1p55" />
+					<show id="la:t1p56" />
+					<show id="la:t1p57" />
+					<show id="la:t1p58" />
+					<show id="la:t1p59" />
+					<show id="la:t1p60" />
+					<show id="la:t1p61" />
+					<show id="la:t1p62" />
+					<show id="la:t1p63" />
+					<show id="la:t1p64" />
+					<show id="la:t1p65" />
+					-->
+				</field-visibility>
+				
+				 <appearance> 				    
+	                <field id="cm:name" label-id="cm_cus_name" /> 
+	                <field id="cm:description" label-id="cm_cus_description" />
+					<field id="la:numberofpage" label-id="la_numpage" />
+				</appearance>
+			</form>
+			<!-- Document Library pop-up Edit Metadata form -->
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<!-- ma co quan luu tru -->
+					<show id="la:t1p1" />
+					<!-- ma phong -->
+					<show id="la:t1p2" />
+					<show id="la:t1p3" />  <!-- muc luc so -->
+					<show id="la:t1p4" />  <!-- hop so -->
+					<show id="la:t1p5" />  <!-- ho so so -->
+					<show id="la:t1p6" />   <!-- to so -->
+					<show id="la:t1p7" />  <!-- ten loai -->
+					<show id="la:t1p8" />   <!-- so va ki hieu  -->
+					<show id="la:t1p36" />    <!-- thoi gian -->
+					<!--<show id="la:t1p9" />-->
+					<show id="la:t1p10" />  <!-- tac gia  -->
+					<show id="cm:description" force="true" /> <!--  Trichyeunoidung - description -->
+					<show id="la:numberofpage" />  <!-- sotrang -->
+					<!--<show id="la:t1p11" /> -->
+					<show id="cm:name" force="true" />   <!-- Kyhieuthongtin -->
+					
+					
+					<!--<show id="la:t1p13" />-->
+					<!--<show id="la:t1p14" />--> <!-- soluongto -->
+					<show id="la:t1p15" />   <!-- ngonngu -->
+					<show id="la:t1p16" />   <!-- buttich -->
+					<show id="la:t1p17" />    <!-- tinh trang vat ly-->
+					<show id="la:t1p18" />   <!-- ghi chu -->
+					
+					<!--<show id="la:t1p19" />
+					<show id="la:t1p20" />
+					<show id="la:t1p21" />
+					<show id="la:t1p22" />
+					<show id="la:t1p23" />
+					<show id="la:t1p24" />
+					<show id="la:t1p25" />
+					<show id="la:t1p26" />
+					<show id="la:t1p27" />
+					<show id="la:t1p28" />
+					<show id="la:t1p29" />
+					<show id="la:t1p30" />
+					<show id="la:t1p31" />
+					<show id="la:t1p32" />
+					<show id="la:t1p33" />
+					<show id="la:t1p34" />
+					<show id="la:t1p35" />
+					-->
+					
+					<!--<show id="la:t1p37" />
+					<show id="la:t1p38" />
+					<show id="la:t1p39" />
+					<show id="la:t1p40" />
+					-->
+					<!--<show id="la:t1p42" />
+					<show id="la:t1p43" />
+					<show id="la:t1p44" />
+					<show id="la:t1p45" />
+					<show id="la:t1p46" />
+					<show id="la:t1p47" />
+					<show id="la:t1p48" />
+					<show id="la:t1p49" />
+					<show id="la:t1p50" />
+					<show id="la:t1p51" />
+					<show id="la:t1p52" />
+					<show id="la:t1p53" />
+					<show id="la:t1p54" />
+					<show id="la:t1p55" />
+					<show id="la:t1p56" />
+					<show id="la:t1p57" />
+					<show id="la:t1p58" />
+					<show id="la:t1p59" />
+					<show id="la:t1p60" />
+					<show id="la:t1p61" />
+					<show id="la:t1p62" />
+					<show id="la:t1p63" />
+					<show id="la:t1p64" />
+					<show id="la:t1p65" />
+					-->
+				</field-visibility>
+				
+				 <appearance> 				    
+	                <field id="cm:name" label-id="cm_cus_name" />
+	                <field id="cm:description" label-id="cm_cus_description" />
+					<field id="la:numberofpage" label-id="la_numpage" />
+				</appearance>
+			</form>
+			<!-- Document Library Inline Edit form -->
+			<form id="doclib-inline-edit">
+				<field-visibility>
+					<!-- ma co quan luu tru -->
+					<show id="la:t1p1" />
+					<!-- ma phong -->
+					<show id="la:t1p2" />
+					<show id="la:t1p3" />  <!-- muc luc so -->
+					<show id="la:t1p4" />  <!-- hop so -->
+					<show id="la:t1p5" />  <!-- ho so so -->
+					<show id="la:t1p6" />   <!-- to so -->
+					<show id="la:t1p7" />  <!-- ten loai -->
+					<show id="la:t1p8" />   <!-- so va ki hieu  -->
+					<show id="la:t1p36" />    <!-- thoi gian -->
+					<!--<show id="la:t1p9" />-->
+					<show id="la:t1p10" />  <!-- tac gia  -->
+					<show id="cm:description" force="true" /> <!--  Trichyeunoidung - description -->
+					<show id="la:numberofpage" />  <!-- sotrang -->
+					<!--<show id="la:t1p11" /> -->
+					<show id="cm:name" force="true" />   <!-- Kyhieuthongtin -->
+					
+					
+					<!--<show id="la:t1p13" />-->
+					<!--<show id="la:t1p14" />--> <!-- soluongto -->
+					<show id="la:t1p15" />   <!-- ngonngu -->
+					<show id="la:t1p16" />   <!-- buttich -->
+					<show id="la:t1p17" />    <!-- tinh trang vat ly-->
+					<show id="la:t1p18" />   <!-- ghi chu -->
+					
+					<!--<show id="la:t1p19" />
+					<show id="la:t1p20" />
+					<show id="la:t1p21" />
+					<show id="la:t1p22" />
+					<show id="la:t1p23" />
+					<show id="la:t1p24" />
+					<show id="la:t1p25" />
+					<show id="la:t1p26" />
+					<show id="la:t1p27" />
+					<show id="la:t1p28" />
+					<show id="la:t1p29" />
+					<show id="la:t1p30" />
+					<show id="la:t1p31" />
+					<show id="la:t1p32" />
+					<show id="la:t1p33" />
+					<show id="la:t1p34" />
+					<show id="la:t1p35" />
+					-->
+					
+					<!--<show id="la:t1p37" />
+					<show id="la:t1p38" />
+					<show id="la:t1p39" />
+					<show id="la:t1p40" />
+					-->
+					<!--<show id="la:t1p42" />
+					<show id="la:t1p43" />
+					<show id="la:t1p44" />
+					<show id="la:t1p45" />
+					<show id="la:t1p46" />
+					<show id="la:t1p47" />
+					<show id="la:t1p48" />
+					<show id="la:t1p49" />
+					<show id="la:t1p50" />
+					<show id="la:t1p51" />
+					<show id="la:t1p52" />
+					<show id="la:t1p53" />
+					<show id="la:t1p54" />
+					<show id="la:t1p55" />
+					<show id="la:t1p56" />
+					<show id="la:t1p57" />
+					<show id="la:t1p58" />
+					<show id="la:t1p59" />
+					<show id="la:t1p60" />
+					<show id="la:t1p61" />
+					<show id="la:t1p62" />
+					<show id="la:t1p63" />
+					<show id="la:t1p64" />
+					<show id="la:t1p65" />
+					-->
+				</field-visibility>
+				
+				 <appearance> 				    
+	                <field id="cm:name" label-id="cm_cus_name" />
+	                <field id="cm:description" label-id="cm_cus_description" />
+					<field id="la:numberofpage" label-id="la_numpage" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="model-type" condition="la:t1">
+		<forms>
+			<form id="search">
+				<field-visibility>
+					<show id="searchInFolder" force="true" />
+					<show id="la:t1p1" force="true" />
+					<show id="la:t1p2" force="true" />
+					<show id="la:t1p3" force="true" />
+					<show id="la:t1p4" force="true" />
+					<show id="la:t1p5" force="true" />
+					<show id="la:t1p6" force="true" />
+					<show id="la:t1p7" force="true" />
+					<show id="la:t1p8" force="true" />
+					<show id="la:t1p36" force="true" />
+					<show id="la:t1p10" force="true" />
+					<show id="cm:name" force="true" /> 
+					<show id="cm:description" force="true" />
+					
+					
+					<show id="la:t1p15" force="true" />
+					<show id="la:t1p16" force="true" />
+					<show id="la:t1p17" force="true" />
+					<show id="la:t1p18" force="true" />
+				</field-visibility>
+				<appearance>
+					<field id="searchInFolder" label="Search in">
+						<control template="/org/alfresco/components/form/controls/association.ftl" />
+					</field>
+					<field id="la:t1p1" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p2" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<!-- <field id="la:t1p3" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field> -->
+					<field id="la:t1p4" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p5" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p6" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p7" >
+						<control template="/org/alfresco/components/form/controls/selectone.ftl" />
+					</field>
+					<field id="la:t1p8" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<!--<field id="la:t1p9" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					-->
+					
+					
+					<field id="la:t1p10" >
+						<control template="/org/alfresco/components/form/controls/selectone.ftl" />
+					</field>
+					
+					
+					<!--
+					<field id="la:t1p11" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					-->
+					<field id="la:t1p12" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<!--
+					<field id="la:t1p13" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					-->
+					<field id="la:t1p14" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p15" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p16" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p17" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p18" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					
+					<!--
+					<field id="la:t1p19" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p20" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p21" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p22" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p23" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p24" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p25" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p26" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p27" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p28" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p29" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p30" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t1p31" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t1p32" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t1p33" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t1p34" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t1p35" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					-->
+					<field id="la:t1p36" >
+						<control template="/org/alfresco/components/form/controls/daterange.ftl" />
+					</field>
+					<!--
+					<field id="la:t1p37" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:t1p38" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:t1p39" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:t1p40" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					-->
+					<field id="la:t1p41" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<!--
+					<field id="la:t1p42" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p43" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p44" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p45" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p46" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p47" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p48" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p49" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p50" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p51" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p52" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p53" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p54" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p55" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p56" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p57" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p58" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p59" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p60" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p61" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p62" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p63" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p64" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t1p65" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					-->				    
+					<field id="cm:description" label-id="cm_cus_description" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="cm:name" label-id="cm_cus_name" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+
+
+	<config evaluator="node-type" condition="la:t2">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="la:t2p1" /> <!--Macoquan-->
+					<show id="la:t2p2" />  <!--Maphong-->
+					<show id="la:t2p3" />  <!--Muclucso-->
+					<show id="la:t2p4" /> <!--Hopso-->
+					<show id="la:t2p5" />  <!--Hososo-->
+					<show id="cm:name" force="true" />	
+					<show id="cm:description" force="true" />
+					<show id="la:t2p36" />  <!--thoigianbatdau-->
+					<show id="la:t2p37" />  <!--thoigianketthuc-->
+					<show id="la:numberofpage" />  <!--sotrang-->
+					<show id="la:t2p8" />   <!--chugiai-->
+					<!--<show id="la:t2p9" />
+					<show id="la:t2p10" />-->
+					<show id="la:t2p11" />   <!--ngonngu-->
+					<show id="la:t2p12" />   <!--buttich-->
+					<!--<show id="la:t2p13" />-->
+					<!--<show id="la:t2p14" />-->   <!--soluongto-->
+					<show id="la:t2p15" />  <!--thoigianbaoquan-->
+					<show id="la:t2p16" />  <!--chedosudung-->
+					<show id="la:t2p17" />  <!--tinhtrangvatly-->
+					<show id="cm:modifier" force="true" />
+					<!--<show id="la:t2p18" />
+					<show id="la:t2p19" />
+					<show id="la:t2p20" />
+					<show id="la:t2p21" />
+					<show id="la:t2p22" />
+					<show id="la:t2p23" />
+					<show id="la:t2p24" />
+					<show id="la:t2p25" />
+					<show id="la:t2p26" />
+					<show id="la:t2p27" />
+					<show id="la:t2p28" />
+					<show id="la:t2p29" />
+					<show id="la:t2p30" />
+					<show id="la:t2p31" />
+					<show id="la:t2p32" />
+					<show id="la:t2p33" />
+					<show id="la:t2p34" />
+					<show id="la:t2p35" />
+					-->
+					
+					<!--<show id="la:t2p38" />
+					<show id="la:t2p39" />
+					<show id="la:t2p40" />
+					-->
+					<!--<show id="la:t2p42" />
+					<show id="la:t2p43" />
+					<show id="la:t2p44" />
+					<show id="la:t2p45" />
+					<show id="la:t2p46" />
+					<show id="la:t2p47" />
+					<show id="la:t2p48" />
+					<show id="la:t2p49" />
+					<show id="la:t2p50" />
+					<show id="la:t2p51" />
+					<show id="la:t2p52" />
+					<show id="la:t2p53" />
+					<show id="la:t2p54" />
+					<show id="la:t2p55" />
+					<show id="la:t2p56" />
+					<show id="la:t2p57" />
+					<show id="la:t2p58" />
+					<show id="la:t2p59" />
+					<show id="la:t2p60" />
+					<show id="la:t2p61" />
+					<show id="la:t2p62" />
+					<show id="la:t2p63" />
+					<show id="la:t2p64" />
+					<show id="la:t2p65" />
+					-->
+				</field-visibility>
+				<appearance> 				    
+	                <field id="cm:description" label-id="cm_cushoso_description" />
+					<field id="cm:name" label-id="cm_cushoso_name" />
+					<field id="la:numberofpage" label-id="la_numpage" />
+					<field id="cm:modifier" label-id="cm_cushoso_modifier" />
+				</appearance>
+			</form>
+			<!-- Document Library pop-up Edit Metadata form -->
+			<form id="doclib-simple-metadata">
+				<field-visibility>
+					<show id="la:t2p1" /> <!--Macoquan-->
+					<show id="la:t2p2" />  <!--Maphong-->
+					<show id="la:t2p3" />  <!--Muclucso-->
+					<show id="la:t2p4" /> <!--Hopso-->
+					<show id="la:t2p5" />  <!--Hososo-->
+					<show id="cm:name" force="true" />	
+					<show id="cm:description" force="true" />
+					<show id="la:t2p36" />  <!--thoigianbatdau-->
+					<show id="la:t2p37" />  <!--thoigianketthuc-->
+					<show id="la:numberofpage" />  <!--sotrang-->
+					<show id="la:t2p8" />   <!--chugiai-->
+					<!--<show id="la:t2p9" />
+					<show id="la:t2p10" />-->
+					<show id="la:t2p11" />   <!--ngonngu-->
+					<show id="la:t2p12" />   <!--buttich-->
+					<!--<show id="la:t2p13" />-->
+					<!--<show id="la:t2p14" />-->   <!--soluongto-->
+					<show id="la:t2p15" />  <!--thoigianbaoquan-->
+					<show id="la:t2p16" />  <!--chedosudung-->
+					<show id="la:t2p17" />  <!--tinhtrangvatly-->
+					<show id="cm:modifier" force="true" />
+					<!--<show id="la:t2p18" />
+					<show id="la:t2p19" />
+					<show id="la:t2p20" />
+					<show id="la:t2p21" />
+					<show id="la:t2p22" />
+					<show id="la:t2p23" />
+					<show id="la:t2p24" />
+					<show id="la:t2p25" />
+					<show id="la:t2p26" />
+					<show id="la:t2p27" />
+					<show id="la:t2p28" />
+					<show id="la:t2p29" />
+					<show id="la:t2p30" />
+					<show id="la:t2p31" />
+					<show id="la:t2p32" />
+					<show id="la:t2p33" />
+					<show id="la:t2p34" />
+					<show id="la:t2p35" />
+					-->
+					
+					<!--<show id="la:t2p38" />
+					<show id="la:t2p39" />
+					<show id="la:t2p40" />
+					-->
+					<!--<show id="la:t2p42" />
+					<show id="la:t2p43" />
+					<show id="la:t2p44" />
+					<show id="la:t2p45" />
+					<show id="la:t2p46" />
+					<show id="la:t2p47" />
+					<show id="la:t2p48" />
+					<show id="la:t2p49" />
+					<show id="la:t2p50" />
+					<show id="la:t2p51" />
+					<show id="la:t2p52" />
+					<show id="la:t2p53" />
+					<show id="la:t2p54" />
+					<show id="la:t2p55" />
+					<show id="la:t2p56" />
+					<show id="la:t2p57" />
+					<show id="la:t2p58" />
+					<show id="la:t2p59" />
+					<show id="la:t2p60" />
+					<show id="la:t2p61" />
+					<show id="la:t2p62" />
+					<show id="la:t2p63" />
+					<show id="la:t2p64" />
+					<show id="la:t2p65" />
+					-->
+				</field-visibility>
+				<appearance> 				    
+	                <field id="cm:description" label-id="cm_cushoso_description" />
+					<field id="cm:name" label-id="cm_cushoso_name" />
+					<field id="la:numberofpage" label-id="la_numpage" />
+					<field id="cm:modifier" label-id="cm_cushoso_modifier" />
+				</appearance>
+			</form>
+			<!-- Document Library Inline Edit form -->
+			<form id="doclib-inline-edit">
+				<field-visibility>
+					<show id="la:t2p1" /> <!--Macoquan-->
+					<show id="la:t2p2" />  <!--Maphong-->
+					<show id="la:t2p3" />  <!--Muclucso-->
+					<show id="la:t2p4" /> <!--Hopso-->
+					<show id="la:t2p5" />  <!--Hososo-->
+					<show id="cm:name" force="true" />	
+					<show id="cm:description" force="true" />
+					<show id="la:t2p36" />  <!--thoigianbatdau-->
+					<show id="la:t2p37" />  <!--thoigianketthuc-->
+					<show id="la:numberofpage" />  <!--sotrang-->
+					<show id="la:t2p8" />   <!--chugiai-->
+					<!--<show id="la:t2p9" />
+					<show id="la:t2p10" />-->
+					<show id="la:t2p11" />   <!--ngonngu-->
+					<show id="la:t2p12" />   <!--buttich-->
+					<!--<show id="la:t2p13" />-->
+					<!--<show id="la:t2p14" />-->   <!--soluongto-->
+					<show id="la:t2p15" />  <!--thoigianbaoquan-->
+					<show id="la:t2p16" />  <!--chedosudung-->
+					<show id="la:t2p17" />  <!--tinhtrangvatly-->
+					<show id="cm:modifier" force="true" />
+					<!--<show id="la:t2p18" />
+					<show id="la:t2p19" />
+					<show id="la:t2p20" />
+					<show id="la:t2p21" />
+					<show id="la:t2p22" />
+					<show id="la:t2p23" />
+					<show id="la:t2p24" />
+					<show id="la:t2p25" />
+					<show id="la:t2p26" />
+					<show id="la:t2p27" />
+					<show id="la:t2p28" />
+					<show id="la:t2p29" />
+					<show id="la:t2p30" />
+					<show id="la:t2p31" />
+					<show id="la:t2p32" />
+					<show id="la:t2p33" />
+					<show id="la:t2p34" />
+					<show id="la:t2p35" />
+					-->
+					
+					<!--<show id="la:t2p38" />
+					<show id="la:t2p39" />
+					<show id="la:t2p40" />
+					-->
+					<!--<show id="la:t2p42" />
+					<show id="la:t2p43" />
+					<show id="la:t2p44" />
+					<show id="la:t2p45" />
+					<show id="la:t2p46" />
+					<show id="la:t2p47" />
+					<show id="la:t2p48" />
+					<show id="la:t2p49" />
+					<show id="la:t2p50" />
+					<show id="la:t2p51" />
+					<show id="la:t2p52" />
+					<show id="la:t2p53" />
+					<show id="la:t2p54" />
+					<show id="la:t2p55" />
+					<show id="la:t2p56" />
+					<show id="la:t2p57" />
+					<show id="la:t2p58" />
+					<show id="la:t2p59" />
+					<show id="la:t2p60" />
+					<show id="la:t2p61" />
+					<show id="la:t2p62" />
+					<show id="la:t2p63" />
+					<show id="la:t2p64" />
+					<show id="la:t2p65" />
+					-->
+				</field-visibility>
+				<appearance> 				    
+	                <field id="cm:description" label-id="cm_cushoso_description" />
+					<field id="cm:name" label-id="cm_cushoso_name" />
+					<field id="la:numberofpage" label-id="la_numpage" />
+					<field id="cm:modifier" label-id="cm_cushoso_modifier" />
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="model-type" condition="la:t2">
+		<forms>
+			<form id="search">
+				<field-visibility>
+					<show id="searchInFolder" force="true" />
+					<show id="la:t2p1" force="true" />
+					<show id="la:t2p2" force="true" />
+					<show id="la:t2p3" force="true" />
+					<show id="la:t2p4" force="true" />
+					<show id="la:t2p5" force="true" />
+					<show id="cm:name" force="true" />
+					<show id="cm:description" force="true" />
+					<show id="la:t2p36" force="true" />
+					<show id="la:t2p37" force="true" />
+					<show id="la:t2p8" force="true" />
+					<show id="la:t2p11" force="true" />
+					<show id="la:t2p12" force="true" />
+					<show id="la:t2p15" force="true" />
+					<show id="la:t2p16" force="true" />
+					<show id="la:t2p17" force="true" />
+					<show id="cm:modifier" force="true" />
+				</field-visibility>
+				<appearance>
+					<field id="searchInFolder" label="Search in">
+						<control template="/org/alfresco/components/form/controls/association.ftl" />
+					</field>
+					<field id="la:t2p1" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p2" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p3" >
+						<control template="/org/alfresco/components/form/controls/selectone.ftl" />
+					</field>
+					<field id="la:t2p4" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p5" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p6" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p7" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p8" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<!--<field id="la:t2p9" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p10" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					-->
+					<field id="la:t2p11" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p12" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<!--
+					<field id="la:t2p13" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					-->
+					<field id="la:t2p14" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p15" >
+						<control template="/org/alfresco/components/form/controls/selectone.ftl" />
+					</field>
+					<field id="la:t2p16" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p17" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<!--
+					<field id="la:t2p18" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p19" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p20" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p21" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p22" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p23" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p24" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p25" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p26" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p27" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p28" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p29" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p30" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:t2p31" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t2p32" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t2p33" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t2p34" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:t2p35" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					-->
+					<field id="la:t2p36" >
+						<control template="/org/alfresco/components/form/controls/daterange.ftl" />
+					</field>
+					<field id="la:t2p37" >
+						<control template="/org/alfresco/components/form/controls/daterange.ftl" />
+					</field>
+						
+					<!--
+					<field id="la:t2p38" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:t2p39" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:t2p40" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					-->
+					<field id="la:t2p41" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<!--
+					<field id="la:t2p42" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p43" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p44" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p45" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p46" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p47" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p48" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p49" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p50" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p51" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p52" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p53" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p54" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p55" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p56" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p57" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p58" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p59" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p60" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p61" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p62" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p63" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p64" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:t2p65" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					-->
+					<field id="cm:description" label-id="cm_cushoso_description" />
+					<field id="cm:name" label-id="cm_cushoso_name" />
+					<field id="cm:modifier" label-id="cm_cushoso_modifier" >
+						<control>
+							<control-param name="forceEditable">true</control-param>
+						</control>
+					</field> 
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<!-- Bao cao -->
+	<config evaluator="string-compare" condition="Lamptt">
+		<advanced-search>
+			<forms>
+				<form labelId="type.la_t1" descriptionId="type.la_t1.description" >la:t3</form>
+				<form labelId="type.la_t2" descriptionId="type.la_t2.description" >la:t4</form>
+			</forms>
+		</advanced-search>
+	</config>
+	
+	<config evaluator="model-type" condition="la:t3">
+		<forms>
+			<form id="search">
+				<field-visibility>
+					<show id="username" force="true" />
+					<show id="folders" force="true" />
+				</field-visibility>
+				<appearance>
+					<field id="username" label="UserName(loai t3)">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="folders" label="Thu muc duoc phan cong">
+						<control template="/org/alfresco/components/form/controls/space.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<config evaluator="model-type" condition="la:t4">
+		<forms>
+			<form id="search">
+				<field-visibility>
+					<show id="username" force="true" />
+					<show id="folders" force="true" />
+				</field-visibility>
+				<appearance>
+					<field id="username" label="Year(loai t4)">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="folders" label="Thu muc duoc phan cong">
+						<control template="/org/alfresco/components/form/controls/spaceone.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- End Bao Cao -->
+	
+	<config evaluator="aspect" condition="ks:sample">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="ks:option" />
+					<show id="ks:anotherOption" />
+				</field-visibility>
+				<appearance>
+					<!-- <set id="datalists" appearance="bordered-panel" label="Option lists" /> -->
+					<set id="datalists" label="Option lists" />
+					<field id="ks:option" set="datalists" label="Option">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">Smartphones</control-param>
+	                   </control>
+					</field>
+					<field id="ks:anotherOption" set="datalists" label="Another option">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">OS</control-param>
+	                   </control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	
+	<config evaluator="model-type" condition="dlm:optionList">
+      <forms>
+         <form>
+            <field-visibility>
+               <show id="dlm:code" />
+               <show id="dlm:value" />
+             </field-visibility>
+            <create-form template="/org/alfresco/components/data-lists/forms/dataitem.ftl" />
+            <appearance>
+            </appearance>
+         </form>
+
+         <form id="datagrid">
+            <field-visibility>
+               <show id="dlm:code" />
+               <show id="dlm:value" />
+            </field-visibility>
+         </form>
+      </forms>
+   </config>
+
+   <config evaluator="node-type" condition="dlm:optionList">
+      <forms>
+         <form>
+            <field-visibility>
+               <show id="dlm:code" />
+               <show id="dlm:value" />
+            </field-visibility>
+            <edit-form template="/org/alfresco/components/data-lists/forms/dataitem.ftl" />
+            <appearance>
+            </appearance>
+         </form>
+      </forms>
+   </config>
+	
+</alfresco-config>

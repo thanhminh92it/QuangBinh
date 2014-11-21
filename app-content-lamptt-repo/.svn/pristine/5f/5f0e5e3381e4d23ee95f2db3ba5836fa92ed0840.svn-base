@@ -1,0 +1,9 @@
+#Mon Nov 10 10:21:59 ICT 2014
+module.version=1.0.1411101019
+module.description=Manages the lifecycle of the app-content-lamptt-repo AMP (Alfresco Module Package)
+module.id=app-content-lamptt-repo
+module.repo.version.max=999
+module.title=app-content-lamptt-repo AMP project
+module.repo.version.min=0
+module.installState=INSTALLED
+module.installDate=2014-11-10T10\:21\:59.774+07\:00

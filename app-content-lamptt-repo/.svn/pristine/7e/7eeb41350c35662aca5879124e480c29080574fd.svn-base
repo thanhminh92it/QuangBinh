@@ -1,0 +1,8 @@
+<webscript>
+	<shortname>lamptt</shortname>
+	<description>Out properties root by lamptt</description>
+	<url>/zalu/rootpro</url>
+	<format default="json">extension</format>
+	<authentication>admin</authentication>
+  	<transaction>required</transaction>
+</webscript>

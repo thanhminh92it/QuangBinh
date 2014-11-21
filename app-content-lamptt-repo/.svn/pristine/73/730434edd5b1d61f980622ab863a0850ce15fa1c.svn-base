@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="sla:count" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<description>lamptt'S count</description>
+	<author>lamptt</author>
+	<version>1.0</version>
+	
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+	</imports>
+
+	<!-- Introduction of new namespaces defined by this model -->
+	<namespaces>
+		<namespace uri="http://zalu.vn/model/count/1.0" prefix="sla" />
+	</namespaces>
+	
+	<types>
+		<type name="sla:c1">
+			<title>child1</title>
+			<parent>sys:base</parent>
+			<properties>
+				<property name="sla:c11">
+					<type>d:long</type>
+				</property>
+				
+				<property name="sla:c12">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c13">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c14">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c15">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c16">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c17">
+					<type>d:long</type>
+				</property>
+			</properties>
+
+			<associations>
+				<child-association name="sla:c2s">
+					<title>c2s</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>sla:c2</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</child-association>
+			</associations>
+		</type>
+		
+		
+		<type name="sla:c2">
+			<title>child2</title>
+			<parent>sys:base</parent>
+			<properties>
+				<property name="sla:c21">
+					<type>d:long</type>
+				</property>
+				
+				<property name="sla:c22">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c23">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c24">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c25">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c26">
+					<type>d:long</type>
+				</property>
+				<property name="sla:c27">
+					<type>d:long</type>
+				</property>
+			</properties>
+		</type>
+		
+		<!-- count y and m -->>
+		<type name="sla:y">
+			<title>child1 - y</title>
+			<parent>sys:base</parent>
+			<properties>
+				<property name="sla:y1">
+					<type>d:long</type>
+				</property>
+				<property name="sla:y2">
+					<type>d:long</type>
+				</property>
+				
+			</properties>
+
+			<associations>
+				<child-association name="sla:ms">
+					<title>c2s</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>sla:m</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</child-association>
+			</associations>
+		</type>
+		
+		
+		<type name="sla:m">
+			<title>child2 m</title>
+			<parent>sys:base</parent>
+			<properties>
+				<property name="sla:m1">
+					<type>d:long</type>
+				</property>
+				
+				<property name="sla:m2">
+					<type>d:long</type>
+				</property>
+			</properties>
+		</type>
+		
+		<!-- report count username -->
+		<type name="sla:rcu1">
+			<title>child1 - username and year</title>
+			<parent>sys:base</parent>
+			<properties>
+				<!-- save year-->
+				<property name="sla:rcu1p0">
+					<type>d:text</type>
+				</property>
+				<!-- van giu lai so lech Database UBND_QuangNinh, Cac du an moi thi bo di-->
+				<property name="sla:rcu1p1">
+					<type>d:int</type>
+				</property>
+				<!-- save 1 id folder cua nam do-->
+				<property name="sla:rcu1p2">
+					<type>d:text</type>
+				</property>
+			</properties>
+
+			<associations>
+				<child-association name="sla:rcu2s">
+					<title>rcu2s</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>sla:rcu2</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</child-association>
+			</associations>
+		</type>
+		
+		<type name="sla:rcu2">
+			<title>child2 rcu2</title>
+			<parent>sys:base</parent>
+			<properties>
+				<!-- save username-->
+				<property name="sla:rcu2p0">
+					<type>d:text</type>
+				</property>
+				
+				<!-- save list id folder cach nhau boi dau ","-->
+				<property name="sla:rcu2p2">
+					<type>d:text</type>
+				</property>
+			</properties>
+		</type>
+		
+	</types>
+
+	<aspects>
+		<aspect name="sla:countfolder">
+			<title>count f1 to f7</title>
+			<properties>
+				<property name="sla:f1">
+					<type>d:long</type>
+				</property>
+				
+				<property name="sla:f2">
+					<type>d:long</type>
+				</property>
+				<property name="sla:f3">
+					<type>d:long</type>
+				</property>
+				<property name="sla:f4">
+					<type>d:long</type>
+				</property>
+				<property name="sla:f5">
+					<type>d:long</type>
+				</property>
+				<property name="sla:f6">
+					<type>d:long</type>
+				</property>
+				<property name="sla:f7">
+					<type>d:long</type>
+				</property>
+							
+			</properties>
+			
+			
+			<associations>
+				<child-association name="sla:c1s">
+					<title>c1s</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>sla:c1</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</child-association>
+			</associations>
+			
+		</aspect>
+		
+		<!-- Definition count date -->
+		<aspect name="sla:countdate">
+			<title>count date</title>
+			<properties>
+				<property name="sla:d1">
+					<type>d:long</type>
+				</property>
+			</properties>
+			
+			
+			<associations>
+				<child-association name="sla:ys">
+					<title>c1s</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>sla:y</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</child-association>
+			</associations>
+			
+		</aspect>
+		
+		
+		<!-- report count username -->
+		<aspect name="sla:countreport">
+			<title>count date</title>
+			
+			<associations>
+				<child-association name="sla:rcu1s">
+					<title>c1s</title>
+					<source>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</source>
+					<target>
+						<class>sla:rcu1</class>
+						<mandatory>false</mandatory>
+						<many>true</many>
+					</target>
+				</child-association>
+			</associations>
+			
+		</aspect>
+		
+		
+		
+	</aspects>
+</model>

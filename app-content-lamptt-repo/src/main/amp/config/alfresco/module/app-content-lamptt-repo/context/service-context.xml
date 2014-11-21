@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+    	
+    http://www.apache.org/licenses/LICENSE-2.0
+    	
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<beans>
+    <!-- Registration of new models -->
+    <bean id="app-content-lamptt-repo_dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
+        <property name="models">
+            <list>                
+                <value>alfresco/module/app-content-lamptt-repo/model/lampttModel.xml</value>   
+                <value>alfresco/module/app-content-lamptt-repo/model/lampttcountModel.xml</value>  
+                <value>alfresco/module/app-content-lamptt-repo/model/datalist-model.xml</value>
+				<value>alfresco/module/app-content-lamptt-repo/model/custom-model.xml</value>    
+            </list>
+        </property>
+        <property name="labels">
+            <list>
+                <value>alfresco/module/app-content-lamptt-repo/messages/lamptt</value>
+                <value>alfresco/module/app-content-lamptt-repo/messages/datalist-model</value>
+             	<value>alfresco/module/app-content-lamptt-repo/messages/custom-model</value>
+            </list>        
+        </property>        
+    </bean>
+    
+  
+    
+	<bean id="webscript.es.keensoft.datalist.datalist.get" 
+	      class="es.keensoft.alfresco.action.webscript.DataListWebScript" parent="webscript">
+	      <property name="nodeService" ref="NodeService"/>
+	      <property name="siteService" ref="SiteService"/>
+	      <property name="transactionService" ref="TransactionService" />
+	      <property name="taggingService" ref="TaggingService" />
+	      <!-- TODO Customize this value with Site shortname used to manage option lists -->
+          <property name="publicSiteName" value="administration" />
+    </bean>
+    
+    
+    <bean id="countBean" class="zalu.vn.beans.CountBean">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="nodeLocatorService">
+			<ref bean="nodeLocatorService" />
+		</property>
+	</bean>
+	
+	<bean id="webscript.zalu.vn.install.installcount.get" class="zalu.vn.scripts.InstallCount"
+		parent="webscript">
+		<property name="countBean">
+			<ref bean="countBean" />
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+	</bean>
+	
+	<!-- <bean id="app-content-lamptt-repo_countBehavior" class="zalu.vn.behavior.Count"
+		init-method="init">
+		<property name="countBean">
+			<ref bean="countBean" />
+		</property>
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="policyComponent">
+			<ref bean="policyComponent" />
+		</property>
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="contentService">
+         <ref bean="contentService" />
+      	</property>
+	</bean>
+ -->	
+	<!-- <bean id="app-content-lamptt-repo_countdateBehavior" class="zalu.vn.behavior.CountDate"
+		init-method="init">
+	
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="policyComponent">
+			<ref bean="policyComponent" />
+		</property>
+		
+	</bean> -->
+	
+	<bean id="count-pages" class="zalu.vn.action.executer.CountPages" parent="action-executer">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+		<property name="serviceRegistry">
+			<ref bean="ServiceRegistry" />
+		</property>
+		<property name="contentService">
+         <ref bean="contentService" />
+      	</property>
+	</bean>
+	
+	<bean id="edit-title" class="zalu.vn.action.executer.EditTitle" parent="action-executer">
+		<property name="nodeService">
+			<ref bean="NodeService" />
+		</property>
+	</bean>
+	
+	<!-- cho chuc nang Search in folder
+	<bean id="searchInFolderFilterNode" 
+			class="zalu.vn.forms.SearchInFolderFilter" 
+			parent="baseFormFilter">
+		<property name="filterRegistry" ref="nodeFilterRegistry" />
+	</bean>
+	<bean id="searchInFolderFilterType" 
+			class="zalu.vn.forms.SearchInFolderFilter" 
+			parent="baseFormFilter">
+		<property name="filterRegistry" ref="typeFilterRegistry" />
+	</bean> -->
+	
+</beans>
